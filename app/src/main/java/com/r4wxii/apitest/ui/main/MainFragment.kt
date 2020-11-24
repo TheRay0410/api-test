@@ -7,11 +7,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment(layoutId: Int = R.layout.main_fragment) : Fragment(layoutId) {
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private val viewModel by viewModels<MainViewModel>()
 
 }
