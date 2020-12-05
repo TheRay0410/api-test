@@ -54,5 +54,6 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
     implementation("io.ktor:ktor-client-core:1.4.2")
     implementation("io.ktor:ktor-client-cio:1.4.2")
+    implementation("io.ktor:ktor-client-serialization-jvm:1.4.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 }

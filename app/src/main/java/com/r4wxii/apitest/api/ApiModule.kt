@@ -7,6 +7,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.*
+import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
 @Module
@@ -21,6 +24,10 @@ abstract class ApiModule {
     internal object HttpClientModule {
         @Provides
         @Singleton
-        fun provideHttpClient(): HttpClient = HttpClient(CIO)
+        fun provideHttpClient(): HttpClient = HttpClient(CIO) {
+            install(JsonFeature) {
+                serializer = KotlinxSerializer(Json { ignoreUnknownKeys = true })
+            }
+        }
     }
 }
