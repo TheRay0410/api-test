@@ -6,9 +6,9 @@ import com.r4wxii.apitest.modoel.Feed
 import javax.inject.Inject
 
 interface FeedlyRepository {
-    suspend fun getFeeds(token: String): List<Feed>
+    suspend fun getFeeds(): List<Feed>
 }
 
 class FeedlyRepositoryImpl @Inject constructor(private val api: FeedlyApi) : FeedlyRepository {
-    override suspend fun getFeeds(token: String): List<Feed> = api.fetchCategories(token).first().feeds
+    override suspend fun getFeeds(): List<Feed> = api.fetchCategories().first().feeds
 }

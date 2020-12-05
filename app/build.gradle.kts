@@ -17,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","feeadlyApiToken", "${project.property("feedlyApi.token")}")
     }
 
     buildTypes {
@@ -33,6 +35,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 
