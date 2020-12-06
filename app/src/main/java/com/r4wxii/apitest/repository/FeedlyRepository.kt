@@ -1,8 +1,7 @@
 package com.r4wxii.apitest.repository
 
 import com.r4wxii.apitest.api.FeedlyApi
-import com.r4wxii.apitest.modoel.Category
-import com.r4wxii.apitest.modoel.Feed
+import com.r4wxii.apitest.model.Feed
 import javax.inject.Inject
 
 interface FeedlyRepository {

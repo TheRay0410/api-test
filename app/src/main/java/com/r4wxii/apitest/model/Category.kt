@@ -1,4 +1,4 @@
-package com.r4wxii.apitest.modoel
+package com.r4wxii.apitest.model
 
 import kotlinx.serialization.Serializable
 

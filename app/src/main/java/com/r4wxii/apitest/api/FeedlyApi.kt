@@ -1,8 +1,7 @@
 package com.r4wxii.apitest.api
 
 import com.r4wxii.apitest.BuildConfig
-import com.r4wxii.apitest.modoel.Category
-import com.r4wxii.apitest.modoel.Feed
+import com.r4wxii.apitest.model.Category
 import io.ktor.client.*
 import io.ktor.client.request.*
 import javax.inject.Inject

@@ -2,7 +2,7 @@ package com.r4wxii.apitest.ui.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.r4wxii.apitest.modoel.Feed
+import com.r4wxii.apitest.model.Feed
 import com.r4wxii.apitest.repository.FeedlyRepository
 
 class MainViewModel @ViewModelInject constructor(
