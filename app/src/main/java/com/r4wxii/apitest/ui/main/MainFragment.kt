@@ -16,13 +16,17 @@ import kotlinx.coroutines.launch
 class MainFragment(layoutId: Int = R.layout.main_fragment) : Fragment(layoutId) {
     private val viewModel by viewModels<MainViewModel>()
 
+    private val listAdapter = FeedListAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = MainFragmentBinding.bind(view)
 
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            viewModel.getFeeds()
+        binding.feedList.adapter = listAdapter
+
+        viewModel.feeds.observe(viewLifecycleOwner) {
+            listAdapter.submitList(it)
         }
     }
 }
