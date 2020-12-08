@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization") version "1.4.10"
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -52,6 +53,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.2")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("com.google.dagger:dagger:2.30")
     kapt("com.google.dagger:dagger-compiler:2.30")
