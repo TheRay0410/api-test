@@ -7,5 +7,18 @@
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.r4wxii.apitest.ui.main.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+        <action
+            android:id="@+id/act_main_to_feed"
+            app:destination="@id/entry_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/entry_fragment"
+        android:name="com.r4wxii.apitest.ui.main.EntryFragment"
+        android:label="EntryFragment">
+        <argument
+            android:name="streamId"
+            app:argType="string" />
+    </fragment>
 </navigation>
