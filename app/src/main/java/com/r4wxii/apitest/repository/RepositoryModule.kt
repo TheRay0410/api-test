@@ -12,4 +12,8 @@ abstract class RepositoryModule{
     @Binds
     @Singleton
     abstract fun provideFeedlyRepository(repository: FeedlyRepositoryImpl): FeedlyRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideNotionRepository(repository: NotionRepositoryImpl): NotionRepository
 }

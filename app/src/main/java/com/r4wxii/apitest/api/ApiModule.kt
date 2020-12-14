@@ -19,6 +19,10 @@ abstract class ApiModule {
     @Singleton
     abstract fun provideFeedlyApi(apiImpl: FeedlyApiImpl): FeedlyApi
 
+    @Binds
+    @Singleton
+    abstract fun provideNotionApi(apiImpl: NotionApiImpl): NotionApi
+
     @Module
     @InstallIn(SingletonComponent::class)
     internal object HttpClientModule {
@@ -26,7 +30,13 @@ abstract class ApiModule {
         @Singleton
         fun provideHttpClient(): HttpClient = HttpClient(CIO) {
             install(JsonFeature) {
-                serializer = KotlinxSerializer(Json { ignoreUnknownKeys = true })
+                serializer =
+                    KotlinxSerializer(
+                        Json {
+                            ignoreUnknownKeys = true
+                            encodeDefaults = true
+                        }
+                    )
             }
         }
     }

@@ -20,6 +20,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String","feeadlyApiToken", "${project.property("feedlyApi.token")}")
+        buildConfigField("String","notionApiToken", "${project.property("notionApi.token")}")
+        buildConfigField("String","notionApiBlockId", "${project.property("notionApi.blockId")}")
     }
 
     buildTypes {

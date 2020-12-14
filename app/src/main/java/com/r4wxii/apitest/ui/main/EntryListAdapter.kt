@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.r4wxii.apitest.databinding.CellEntryBinding
 import com.r4wxii.apitest.model.Entry
 
-class EntryListAdapter :  ListAdapter<Entry, EntryListAdapter.ViewHolder>(Entry.diffUtil) {
+class EntryListAdapter(private val onClickListener: (url: String, title: String) -> Unit) :  ListAdapter<Entry, EntryListAdapter.ViewHolder>(Entry.diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -21,7 +21,9 @@ class EntryListAdapter :  ListAdapter<Entry, EntryListAdapter.ViewHolder>(Entry.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.entry = getItem(position)
+        val entry = getItem(position)
+        holder.binding.entry = entry
+        holder.binding.root.setOnClickListener { onClickListener(entry.linkObjects.first().link, entry.title) }
     }
 
     inner class ViewHolder(val binding: CellEntryBinding) : RecyclerView.ViewHolder(binding.root)
