@@ -15,9 +15,9 @@ class EntryFragment(layoutId: Int = R.layout.entry_fragment) : Fragment(layoutId
     private val navArgs by navArgs<EntryFragmentArgs>()
     private val viewModel by viewModels<EntryViewModel>()
 
-    private val listAdapter = EntryListAdapter { url, title ->
+    private val listAdapter = EntryListAdapter { url, title, entryId ->
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            viewModel.addWebClip(url, title)
+            viewModel.addWebClip(url, title, entryId)
         }
     }
 

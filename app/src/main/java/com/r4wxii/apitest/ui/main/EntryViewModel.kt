@@ -25,5 +25,10 @@ class EntryViewModel @ViewModelInject constructor(
         this.streamId.value = streamId
     }
 
-    suspend fun addWebClip(url: String, title: String) = notionRepository.addWebClip(url, title)
+    suspend fun addWebClip(url: String, title: String, entryId: String) =
+        notionRepository.addWebClip(url, title).collect {
+            if (it) {
+                feedlyRepository.markRead(entryId)
+            }
+        }
 }

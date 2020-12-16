@@ -11,11 +11,11 @@ import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 interface NotionApi {
-    suspend fun postWebClip(pageUrl: String, pageTitle: String)
+    suspend fun postWebClip(pageUrl: String, pageTitle: String): Boolean
 }
 
 class NotionApiImpl @Inject constructor(private val httpClient: HttpClient) : NotionApi {
-    override suspend fun postWebClip(pageUrl: String, pageTitle: String) {
+    override suspend fun postWebClip(pageUrl: String, pageTitle: String): Boolean {
         val response = httpClient.post<HttpResponse> {
             url("https://www.notion.so/api/v3/addWebClipperURLs")
             contentType(ContentType.Application.Json)
@@ -28,6 +28,7 @@ class NotionApiImpl @Inject constructor(private val httpClient: HttpClient) : No
                 )
             )
         }
+        return response.status == HttpStatusCode.OK
     }
 
     @Serializable

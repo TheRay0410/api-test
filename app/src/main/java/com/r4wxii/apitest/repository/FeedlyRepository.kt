@@ -8,9 +8,11 @@ import javax.inject.Inject
 interface FeedlyRepository {
     suspend fun getFeeds(): List<Feed>
     suspend fun getEntries(streamId: String): List<Entry>
+    suspend fun markRead(entryId: String)
 }
 
 class FeedlyRepositoryImpl @Inject constructor(private val api: FeedlyApi) : FeedlyRepository {
     override suspend fun getFeeds(): List<Feed> = api.fetchCategories().first().feeds
     override suspend fun getEntries(streamId: String): List<Entry> = api.fetchContents(streamId).entries
+    override suspend fun markRead(entryId: String) = api.postMarkRead(entryId)
 }
