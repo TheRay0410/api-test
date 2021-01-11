@@ -6,8 +6,6 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 interface NotionApi {
@@ -19,9 +17,7 @@ class NotionApiImpl @Inject constructor(private val httpClient: HttpClient) : No
         val response = httpClient.post<HttpResponse> {
             url("https://www.notion.so/api/v3/addWebClipperURLs")
             contentType(ContentType.Application.Json)
-            headers {
-                append(HttpHeaders.Cookie, "token_v2=${BuildConfig.notionApiToken}")
-            }
+            cookie("token_v2", value = BuildConfig.notionApiToken)
             body = WebClipContent(
                 items = listOf(
                     PageItem(url = pageUrl, title = pageTitle)
